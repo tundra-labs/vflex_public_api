@@ -132,26 +132,18 @@ class VFLEX {
 
   async sendRaw(data) {
     if (!this.midi_output) throw new Error("No MIDI output");
-    return new Promise((resolve, reject) => {
-      try {
-        this.midi_output.send([0x80, 0, 0]);
-        delay_ms(this.midi_packet_delay_ms).then(() => {
-          const promises = [];
-          for (const byte of data) {
-            const hi = (byte >> 4) & 0x0F;
-            const lo = byte & 0x0F;
-            this.midi_output.send([0x90, hi, lo]);
-            promises.push(delay_ms(this.midi_packet_delay_ms));
-          }
-          Promise.all(promises).then(() => {
-            this.midi_output.send([0xA0, 0, 0]);
-            resolve();
-          }).catch(reject);
-        }).catch(reject);
-      } catch (err) {
-        reject(err);
-      }
-    });
+
+    this.midi_output.send([0x80, 0, 0]);
+    await delay_ms(this.midi_packet_delay_ms);
+
+    for (const byte of data) {
+      const hi = (byte >> 4) & 0x0F;
+      const lo = byte & 0x0F;
+      this.midi_output.send([0x90, hi, lo]);
+      await delay_ms(this.midi_packet_delay_ms);
+    }
+
+    this.midi_output.send([0xA0, 0, 0]);
   }
 
   async sendCommand(cmd, payload = new Uint8Array(0), write = false, scratchpad = false, expectAck = true) {
