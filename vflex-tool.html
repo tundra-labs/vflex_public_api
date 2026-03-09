@@ -232,7 +232,6 @@
       </div>
       <button class="primary" id="btn-connect">Connect</button>
       <button id="btn-refresh" disabled>Refresh All</button>
-      <button id="btn-scan" disabled>Scan Mode</button>
     </div>
   </div>
 
@@ -311,6 +310,9 @@
     <h2>USB PD - Power Data Objects</h2>
     <div id="pdo-content">
       <p style="color: var(--text-secondary); font-size: 0.9rem;">Connect to view PDO log.</p>
+    </div>
+    <div style="margin-top: 0.75rem;">
+      <button id="btn-scan" disabled>Clear Log and Enable Scan Mode</button>
     </div>
   </div>
 
@@ -493,10 +495,13 @@ async function setCurrentLimit() {
 async function scanMode() {
   if (busy) return;
   setBusy(true);
-  setStatus('Entering scan mode...');
+  setStatus('Clearing log and enabling scan mode...');
   try {
     await vflex.clearPdoLog();
-    setStatus('Scan mode triggered. Refresh to see updated PDO log.', 'success');
+    vflex.disconnect();
+    setConnected(false);
+    $('pdo-content').innerHTML = '<p style="color: var(--text-secondary); font-size: 0.9rem;">Disconnect VFLEX from PC and plug into power source to scan. After scanning, re-connect.</p>';
+    setStatus('Scan mode enabled. Disconnect and plug into power source.', 'success');
   } catch (err) {
     setStatus('Scan mode failed: ' + err.message, 'error');
   }
