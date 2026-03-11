@@ -1,10 +1,20 @@
 # lib.vflex Documentation
 
-A JavaScript library for communicating with the VFLEX hardware device over MIDI using the Web MIDI API.
+## What is VFLEX?
 
-## Overview
+VFLEX is a universal USB-C power adapter that converts any USB-C Power Delivery charger into a configurable power solution. Set the exact voltage your device needs, plug into a USB-C PD charger or power bank, and power everything from legacy electronics to modern gear. It supports standard (SPR) and extended (EPR) power ranges, including PPS and AVS modes.
 
-The VFLEX device exposes a USB MIDI interface for configuration and diagnostics. The `lib.vflex.js` library provides a high-level JavaScript API that handles connection management, the custom framing protocol, and command/response parsing.
+## Get the hardware
+
+The **VFLEX Base** is available for $8.00 USD from Werewolf.
+
+- [Buy VFLEX Base](https://werewolf.us/products/vflex-base)
+- [Datasheet](https://werewolf.us/vflex/base/datasheet)
+- [User Manual](https://werewolf.us/vflex/user-manual)
+
+## About this library
+
+`lib.vflex.js` is a JavaScript library for communicating with the VFLEX device over MIDI using the Web MIDI API. It provides a high-level API for connection management, the custom framing protocol, and command/response parsing — allowing you to configure voltage, current, and read device diagnostics directly from a browser.
 
 ## MIDI Communication Protocol
 
