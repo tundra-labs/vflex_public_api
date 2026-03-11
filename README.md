@@ -1,10 +1,10 @@
-# VFLEX Public API
+# lib.vflex Documentation
 
 A JavaScript library for communicating with the VFLEX hardware device over MIDI using the Web MIDI API.
 
 ## Overview
 
-The VFLEX device exposes a USB MIDI interface for configuration and diagnostics. The `vflex-lib.js` library provides a high-level JavaScript API that handles connection management, the custom framing protocol, and command/response parsing.
+The VFLEX device exposes a USB MIDI interface for configuration and diagnostics. The `lib.vflex.js` library provides a high-level JavaScript API that handles connection management, the custom framing protocol, and command/response parsing.
 
 ## MIDI Communication Protocol
 
@@ -79,7 +79,7 @@ The PDO log is retrieved in 12 chunks (requested sequentially with chunk IDs 0-1
 ## Quick Start
 
 ```html
-<script src="vflex-lib.js"></script>
+<script src="lib.vflex.js"></script>
 <script>
   const vflex = new VFLEX();
 

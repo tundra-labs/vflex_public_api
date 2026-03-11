@@ -1,6 +1,6 @@
 ---
 title: Browser Requirements
-parent: VFLEX Public API
+parent: lib.vflex Documentation
 nav_order: 5
 ---
 

@@ -1,13 +1,13 @@
 ---
 title: Quick Start
-parent: VFLEX Public API
+parent: lib.vflex Documentation
 nav_order: 3
 ---
 
 # Quick Start
 
 ```html
-<script src="vflex-lib.js"></script>
+<script src="lib.vflex.js"></script>
 <script>
   const vflex = new VFLEX();
 
