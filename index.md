@@ -29,36 +29,13 @@ Looking for a full-featured app? The official VFLEX app includes additional feat
 
 ## About this library
 
-To ensure the long term viability of VFLEX and encourage community development, we're sharing `lib.vflex.js`. This JavaScript library documents the VFLEX communication protocol and provides a MIDI interface for configuring voltage, current, and reading device diagnostics — from the browser or from Node.js. We love when people build cool stuff with our hardware!
+To ensure the long term viability of VFLEX and encourage community development, we're sharing `lib.vflex.js`. This JavaScript library documents the VFLEX communication protocol and provides a MIDI interface for configuring voltage, current, and reading device diagnostics — from the browser or from Node.js. The library is available on [npm](https://www.npmjs.com/package/lib-vflex) as `lib-vflex`. We love when people build cool stuff with our hardware!
 
-### Install via npm
-
-```bash
-npm install lib-vflex
-```
-
-```js
-const { VFLEX, VFLEX_COMMANDS } = require('lib-vflex');
-```
-
-Or include directly in a browser:
-
-```html
-<script src="lib.vflex.js"></script>
-```
-
-### Command-line tool
-
-A standalone CLI tool is also available for quick configuration and testing from the terminal:
-
-```bash
-npm install -g vflex-cli
-vflex-cli --status
-```
-
-See the [CLI Tool](docs/cli.html) page for full usage details.
+[Quick Start](docs/quick-start.html){: .btn .btn-primary .mr-2 }
+[Platform Support](docs/browser-requirements.html){: .btn .mr-2 }
+[CLI Tool](docs/cli.html){: .btn .mr-2 }
+[API Reference](docs/api-reference.html){: .btn .mr-2 }
 
 [Configuration Tool](vflex-tool.html){: .btn .btn-primary .mr-2 }
 [Debug Tool](vflex-debug.html){: .btn .mr-2 }
-[CLI Tool](docs/cli.html){: .btn .mr-2 }
 [Source Code](https://github.com/tundra-labs/lib.vflex){: .btn .mr-2 }
