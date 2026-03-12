@@ -24,6 +24,10 @@ Looking for a full-featured app? The official VFLEX app includes additional feat
 
 To ensure the long term viability of VFLEX and encourage community development, we're sharing `lib.vflex.js`. This JavaScript library documents the VFLEX communication protocol and provides a Web MIDI API interface for configuring voltage, current, and reading device diagnostics — all from the browser. We love when people build cool stuff with our hardware!
 
+- [Source Code](https://github.com/tundra-labs/lib.vflex)
+- [Configuration Tool](https://lib.vflex.app/vflex-tool.html)
+- [Debug Tool](https://lib.vflex.app/vflex-debug.html)
+
 ## MIDI Communication Protocol
 
 ### Connection

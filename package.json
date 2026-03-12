@@ -1,0 +1,21 @@
+{
+  "name": "lib-vflex",
+  "version": "1.0.0",
+  "description": "JavaScript library for communicating with VFLEX USB-PD devices over MIDI (browser and Node.js)",
+  "main": "lib.vflex.js",
+  "files": [
+    "lib.vflex.js"
+  ],
+  "keywords": [
+    "vflex",
+    "usb-pd",
+    "midi",
+    "web-midi",
+    "power-delivery"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lgbeno/vflex_public_api"
+  }
+}

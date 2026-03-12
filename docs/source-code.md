@@ -8,4 +8,4 @@ nav_order: 1
 
 The source code for `lib.vflex.js` is hosted on GitHub.
 
-<a href="https://github.com/tundra-labs/lib.vflex">View on GitHub</a>
+[View on GitHub](https://github.com/tundra-labs/lib.vflex){: .btn .btn-primary }

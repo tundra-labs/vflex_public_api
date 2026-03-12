@@ -12,6 +12,7 @@ nav_order: 4
 | `CMD_HARDWARE_ID` | 10 | UTF-8 string | Hardware revision identifier |
 | `CMD_FIRMWARE_VERSION` | 11 | UTF-8 string | Firmware version string |
 | `CMD_MFG_DATE` | 12 | UTF-8 string | Manufacturing date |
+| `CMD_FLASH_LED_SEQUENCE_ADVANCED` | 13 | Write: `[10, 1, color, 2, 0]` | LED color control (see [API Reference](api-reference.html#led-colors)) |
 | `CMD_PDO_LOG` | 17 | Chunked binary (see below) | USB PD Power Data Object log |
 | `CMD_VOLTAGE_MV` | 18 | uint16 big-endian | Configured output voltage in millivolts |
 | `CMD_CURRENT_LIMIT_MA` | 19 | uint16 big-endian | Current limit in milliamps |

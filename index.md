@@ -29,7 +29,23 @@ Looking for a full-featured app? The official VFLEX app includes additional feat
 
 ## About this library
 
-To ensure the long term viability of VFLEX and encourage community development, we're sharing `lib.vflex.js`. This JavaScript library documents the VFLEX communication protocol and provides a Web MIDI API interface for configuring voltage, current, and reading device diagnostics — all from the browser. We love when people build cool stuff with our hardware!
+To ensure the long term viability of VFLEX and encourage community development, we're sharing `lib.vflex.js`. This JavaScript library documents the VFLEX communication protocol and provides a MIDI interface for configuring voltage, current, and reading device diagnostics — from the browser or from Node.js. We love when people build cool stuff with our hardware!
+
+### Install via npm
+
+```bash
+npm install lib-vflex
+```
+
+```js
+const { VFLEX, VFLEX_COMMANDS } = require('lib-vflex');
+```
+
+Or include directly in a browser:
+
+```html
+<script src="lib.vflex.js"></script>
+```
 
 [Configuration Tool](vflex-tool.html){: .btn .btn-primary .mr-2 }
 [Debug Tool](vflex-debug.html){: .btn .mr-2 }

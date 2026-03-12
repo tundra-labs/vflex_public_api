@@ -1,3 +1,13 @@
+// UMD-style export: works in Node.js (CommonJS/ESM) and browsers (global)
+(function (root, factory) {
+  if (typeof module !== 'undefined' && module.exports) {
+    module.exports = factory();
+  } else {
+    const exported = factory();
+    root.VFLEX = exported.VFLEX;
+    root.VFLEX_COMMANDS = exported.VFLEX_COMMANDS;
+  }
+}(typeof globalThis !== 'undefined' ? globalThis : this, function () {
 
 function delay_ms(ms) {
   return new Promise(r => setTimeout(r, ms));
@@ -8,6 +18,7 @@ const VFLEX_COMMANDS = Object.freeze({
   CMD_HARDWARE_ID:                10,
   CMD_FIRMWARE_VERSION:           11,
   CMD_MFG_DATE:                   12,
+  CMD_FLASH_LED_SEQUENCE_ADVANCED: 13,
   CMD_VOLTAGE_MV:                 18,
   CMD_CURRENT_LIMIT_MA:           19,
   CMD_PDO_LOG:                    17,
@@ -51,6 +62,11 @@ class VFLEX {
 
   async initMidi() {
     if (this.midi_access) return;
+    if (typeof navigator === 'undefined' || !navigator.requestMIDIAccess) {
+      throw new Error(
+        "Web MIDI API not available. In Node.js, use connectWithPorts(input, output) instead of tryConnect()."
+      );
+    }
     try {
       this.midi_access = await navigator.requestMIDIAccess();
       this.midi_access.onstatechange = e => this.handleMidiStateChange(e);
@@ -66,6 +82,10 @@ class VFLEX {
     }
   }
 
+  /**
+   * Browser auto-discovery via Web MIDI API.
+   * Finds the first MIDI device whose name contains "vflex".
+   */
   async tryConnect() {
     if (this.connected) return true;
 
@@ -99,6 +119,26 @@ class VFLEX {
     this.connected = true;
     this.log("VFLEX MIDI connected", 'info');
 
+    return true;
+  }
+
+  /**
+   * Manual connection with user-supplied MIDI ports.
+   * Use this in Node.js or any environment without Web MIDI.
+   *
+   * @param {object} input  - Must support: input.onmidimessage = callback
+   *                          Callback receives { data: [status, d1, d2] }
+   * @param {object} output - Must support: output.send([status, d1, d2])
+   */
+  connectWithPorts(input, output) {
+    if (!input || !output) {
+      throw new Error("Both input and output MIDI ports are required");
+    }
+    this.midi_input = input;
+    this.midi_output = output;
+    this.midi_input.onmidimessage = ev => this.onMidiMessage(ev);
+    this.connected = true;
+    this.log("VFLEX MIDI connected (manual ports)", 'info');
     return true;
   }
 
@@ -513,3 +553,7 @@ class VFLEX {
     return { logData, parsed_pdos, output };
   }
 }
+
+return { VFLEX, VFLEX_COMMANDS };
+
+}));

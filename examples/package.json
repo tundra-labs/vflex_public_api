@@ -1,0 +1,13 @@
+{
+  "name": "vflex-cli-example",
+  "version": "1.0.0",
+  "private": true,
+  "description": "VFLEX CLI tool for Node.js",
+  "main": "cli.js",
+  "bin": {
+    "vflex": "./cli.js"
+  },
+  "dependencies": {
+    "jzz": "^1.8.0"
+  }
+}
